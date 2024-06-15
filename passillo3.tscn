@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://roik40b5sj2t"]
+
+[ext_resource type="Texture2D" uid="uid://vmmqj83mt8dv" path="res://kenney/PNG/Retina/tile_bridge.png" id="1_m7ky5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3nfvk"]
+size = Vector2(607, 23)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+
+[node name="TileBridge" type="Sprite2D" parent="."]
+position = Vector2(-246, 47)
+texture = ExtResource("1_m7ky5")
+
+[node name="TileBridge2" type="Sprite2D" parent="."]
+position = Vector2(-3, 46)
+texture = ExtResource("1_m7ky5")
+
+[node name="TileBridge3" type="Sprite2D" parent="."]
+position = Vector2(-127, 46)
+texture = ExtResource("1_m7ky5")
+
+[node name="TileBridge4" type="Sprite2D" parent="."]
+position = Vector2(245, 48)
+texture = ExtResource("1_m7ky5")
+
+[node name="TileBridge5" type="Sprite2D" parent="."]
+position = Vector2(123, 47)
+texture = ExtResource("1_m7ky5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_3nfvk")
+one_way_collision = true

@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkaqcyhv5qho6"]
+
+[ext_resource type="Texture2D" uid="uid://hlxii6s2f8ab" path="res://kenney/PNG/Retina/tile_arch.png" id="1_l3m5b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k3j8f"]
+size = Vector2(608, 24)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+
+[node name="TileArch" type="Sprite2D" parent="."]
+position = Vector2(-244, 46)
+texture = ExtResource("1_l3m5b")
+
+[node name="TileArch2" type="Sprite2D" parent="."]
+position = Vector2(244, 44)
+texture = ExtResource("1_l3m5b")
+
+[node name="TileArch3" type="Sprite2D" parent="."]
+position = Vector2(122, 44)
+texture = ExtResource("1_l3m5b")
+
+[node name="TileArch4" type="Sprite2D" parent="."]
+position = Vector2(0, 44)
+texture = ExtResource("1_l3m5b")
+
+[node name="TileArch5" type="Sprite2D" parent="."]
+position = Vector2(-121, 44)
+texture = ExtResource("1_l3m5b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_k3j8f")
+one_way_collision = true

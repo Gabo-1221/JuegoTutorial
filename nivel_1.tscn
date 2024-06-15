@@ -1,0 +1,98 @@
+[gd_scene load_steps=13 format=3 uid="uid://chafy0tf682s2"]
+
+[ext_resource type="PackedScene" uid="uid://blmlkxq3k58sb" path="res://pasillo1.tscn" id="1_3hvle"]
+[ext_resource type="Script" path="res://Camera2D.gd" id="1_iv5db"]
+[ext_resource type="PackedScene" uid="uid://bkaqcyhv5qho6" path="res://pasillo2.tscn" id="2_epubl"]
+[ext_resource type="PackedScene" uid="uid://roik40b5sj2t" path="res://passillo3.tscn" id="3_pal04"]
+[ext_resource type="PackedScene" uid="uid://k7p74lqhmmyo" path="res://Personaje.tscn" id="5_jlgce"]
+[ext_resource type="Texture2D" uid="uid://gpxdjhmgyu74" path="res://kenney/PNG/Retina/background_treeLarge.png" id="6_c8gud"]
+[ext_resource type="PackedScene" uid="uid://nr5v61tjidr5" path="res://boss.tscn" id="8_0srbd"]
+[ext_resource type="Texture2D" uid="uid://luonyhpuiyjl" path="res://kenney/PNG/Retina/tile_flag.png" id="8_a3plv"]
+[ext_resource type="PackedScene" uid="uid://cl8fmujxb281r" path="res://canvas_layer.tscn" id="9_cnfw1"]
+[ext_resource type="Script" path="res://TileFlag.gd" id="9_ykm58"]
+[ext_resource type="Script" path="res://gameController.gd" id="10_f31x6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vio1b"]
+size = Vector2(208.802, 61.4503)
+
+[node name="nivel1" type="Node2D"]
+position = Vector2(380, 34)
+scale = Vector2(0.581292, 0.596812)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(337.18, -3.35114)
+script = ExtResource("1_iv5db")
+
+[node name="decoracion" type="Node2D" parent="."]
+rotation = -0.0380069
+
+[node name="BackgroundTreeLarge2" type="Sprite2D" parent="decoracion"]
+position = Vector2(-122.69, 600.652)
+rotation = 0.0211819
+texture = ExtResource("6_c8gud")
+
+[node name="BackgroundTreeLarge" type="Sprite2D" parent="decoracion"]
+position = Vector2(1001.16, 453.951)
+rotation = 0.0211819
+texture = ExtResource("6_c8gud")
+
+[node name="suelo" type="Node2D" parent="."]
+position = Vector2(-24.0842, 11.729)
+
+[node name="StaticBody2D" parent="suelo" instance=ExtResource("1_3hvle")]
+position = Vector2(166.87, 259.713)
+rotation = 0.0834613
+
+[node name="StaticBody2D2" parent="suelo" instance=ExtResource("2_epubl")]
+position = Vector2(98.0568, 759.033)
+rotation = -0.0650517
+
+[node name="StaticBody2D3" parent="suelo" instance=ExtResource("3_pal04")]
+position = Vector2(732.85, 557.47)
+rotation = -0.107917
+
+[node name="StaticBody2D4" parent="suelo" instance=ExtResource("3_pal04")]
+position = Vector2(-237.402, -46.916)
+rotation = 0.106805
+
+[node name="personaje" parent="." instance=ExtResource("5_jlgce")]
+position = Vector2(32.6858, 693.686)
+collision_layer = 2
+collision_mask = 5
+gravedad = 500
+jump_speed = 297
+speed = 250
+
+[node name="Boss" parent="." instance=ExtResource("8_0srbd")]
+position = Vector2(-127.303, -150.801)
+
+[node name="TileFlag" type="Sprite2D" parent="."]
+position = Vector2(906.601, 455.755)
+scale = Vector2(0.634398, 0.814169)
+texture = ExtResource("8_a3plv")
+script = ExtResource("9_ykm58")
+
+[node name="Area2D" type="Area2D" parent="TileFlag"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileFlag/Area2D"]
+position = Vector2(13.5586, -10.2901)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_vio1b")
+
+[node name="CanvasLayer" parent="." instance=ExtResource("9_cnfw1")]
+
+[node name="gameController" type="Node2D" parent="."]
+position = Vector2(354.383, 0)
+script = ExtResource("10_f31x6")
+
+[node name="Timer" type="Timer" parent="gameController"]
+autostart = true
+
+[connection signal="player_hit" from="personaje" to="gameController" method="_on_personaje_player_hit"]
+[connection signal="body_entered" from="TileFlag/Area2D" to="personaje" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="TileFlag/Area2D" to="gameController" method="_on_area_2d_body_entered"]
+[connection signal="player_life_update" from="gameController" to="CanvasLayer" method="_on_game_controller_player_life_update"]
+[connection signal="time_update" from="gameController" to="CanvasLayer" method="_on_game_controller_time_update"]
+[connection signal="timeout" from="gameController/Timer" to="gameController" method="_on_timer_timeout"]

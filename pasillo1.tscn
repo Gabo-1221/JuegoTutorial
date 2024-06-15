@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://blmlkxq3k58sb"]
+
+[ext_resource type="Texture2D" uid="uid://dttivwxlf4d7k" path="res://kenney/PNG/Retina/tile_ladder.png" id="1_7v3us"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yjkcq"]
+size = Vector2(594, 47)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+
+[node name="TileLadder5" type="Sprite2D" parent="."]
+position = Vector2(237.081, 0.519715)
+rotation = 1.57895
+texture = ExtResource("1_7v3us")
+
+[node name="TileLadder" type="Sprite2D" parent="."]
+position = Vector2(1.08081, 0.51976)
+rotation = -1.57206
+texture = ExtResource("1_7v3us")
+
+[node name="TileLadder2" type="Sprite2D" parent="."]
+position = Vector2(118.081, 0.51976)
+rotation = -1.57206
+texture = ExtResource("1_7v3us")
+
+[node name="TileLadder3" type="Sprite2D" parent="."]
+position = Vector2(-236.919, 1.51976)
+rotation = -1.57206
+texture = ExtResource("1_7v3us")
+
+[node name="TileLadder4" type="Sprite2D" parent="."]
+position = Vector2(-117.919, 0.51976)
+rotation = -1.57206
+texture = ExtResource("1_7v3us")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.500015)
+shape = SubResource("RectangleShape2D_yjkcq")
+one_way_collision = true

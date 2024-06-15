@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://chafy0tf682s2"]
+
+[ext_resource type="PackedScene" uid="uid://blmlkxq3k58sb" path="res://pasillo1.tscn" id="1_3hvle"]
+[ext_resource type="Script" path="res://Camera2D.gd" id="1_3k1xo"]
+[ext_resource type="PackedScene" uid="uid://bkaqcyhv5qho6" path="res://pasillo2.tscn" id="2_epubl"]
+[ext_resource type="PackedScene" uid="uid://roik40b5sj2t" path="res://passillo3.tscn" id="3_pal04"]
+[ext_resource type="PackedScene" uid="uid://dswmutxsp6cki" path="res://rueda.tscn" id="4_nht2n"]
+[ext_resource type="PackedScene" uid="uid://k7p74lqhmmyo" path="res://personaje.tscn" id="5_jlgce"]
+[ext_resource type="Texture2D" uid="uid://gpxdjhmgyu74" path="res://kenney/PNG/Retina/background_treeLarge.png" id="6_c8gud"]
+
+[node name="nivel1" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(135, 435)
+script = ExtResource("1_3k1xo")
+
+[node name="decoracion" type="Node2D" parent="."]
+rotation = -0.0380069
+
+[node name="BackgroundTreeLarge2" type="Sprite2D" parent="decoracion"]
+position = Vector2(376.62, 385.589)
+rotation = 0.0211819
+scale = Vector2(1, 1)
+texture = ExtResource("6_c8gud")
+
+[node name="BackgroundTreeLarge" type="Sprite2D" parent="decoracion"]
+position = Vector2(1074.91, 206.994)
+rotation = 0.0211819
+scale = Vector2(1, 1)
+texture = ExtResource("6_c8gud")
+
+[node name="RigidBody2D" parent="." instance=ExtResource("4_nht2n")]
+position = Vector2(150, 39)
+
+[node name="RigidBody2D2" parent="." instance=ExtResource("4_nht2n")]
+position = Vector2(1025, 238)
+
+[node name="RigidBody2D3" parent="." instance=ExtResource("4_nht2n")]
+position = Vector2(497, 57)
+
+[node name="suelo" type="Node2D" parent="."]
+
+[node name="StaticBody2D" parent="suelo" instance=ExtResource("1_3hvle")]
+position = Vector2(312, 142)
+rotation = 0.0648172
+
+[node name="StaticBody2D2" parent="suelo" instance=ExtResource("2_epubl")]
+position = Vector2(322, 517)
+rotation = -0.0650517
+scale = Vector2(1, 1)
+
+[node name="StaticBody2D3" parent="suelo" instance=ExtResource("3_pal04")]
+position = Vector2(829, 337)
+rotation = -0.126014
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("5_jlgce")]
+position = Vector2(135, 435)
+gravedad = 250
+jump_speed = 150
+speed = 20
